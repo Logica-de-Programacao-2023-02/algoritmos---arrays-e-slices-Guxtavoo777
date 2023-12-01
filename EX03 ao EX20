@@ -1,0 +1,395 @@
+EX03
+package main
+
+import "fmt"
+
+func main() {
+	var produto float64
+	array := [4]float64{1.1, 2.2, 3.3, 4.4}
+
+	for i := 0; i < len(array); i++ {
+
+		produto *= array[i]
+	}
+	fmt.Println(produto)
+}
+
+EX04
+
+package main
+
+import "fmt"
+
+func main() {
+	var tamanho, valor int
+
+	fmt.Print("DIgite o tamanho da Slice: ")
+	fmt.Scan(&tamanho)
+
+	slice := make([]int, tamanho)
+
+	for i := 0; i < tamanho; i++ {
+		fmt.Print("Digite um valor: ")
+		fmt.Scan(&valor)
+		slice[i] = valor
+	}
+
+	var soma int
+
+	for _, x := range slice {
+		soma += x
+	}
+
+	fmt.Println("Meu slice é: ", slice)
+	fmt.Println("A soma é:", soma)
+
+}
+
+EX05
+
+package main
+
+import "fmt"
+
+func main() {
+	var matriz [3][2]int
+
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 2; j++ {
+			fmt.Printf("Digite o valor da linha %d e coluna %d: \n", i, j)
+			fmt.Scan(&matriz[i][j])
+		}
+	}
+
+	for _, ints := range matriz {
+		fmt.Println(ints)
+	}
+}
+
+EX06
+
+package main
+
+import "fmt"
+
+func main() {
+	var numero int
+	var array = [10]int{1, 4, 8, 6, 8, 12, 5, 2, 9, 10}
+
+	fmt.Println("Digite um número")
+	fmt.Scanln(&numero)
+	for i := 0; i < len(array); i++ {
+		if i == numero {
+			fmt.Println("O número que voce digitou esta na lista!")
+			break
+		} else {
+			fmt.Println("O número que voce digitou nao esta na lista")
+			continue
+		}
+	}
+}
+
+EX07
+
+package main
+
+import "fmt"
+
+func main() {
+	array := [5]int{1, 2, 3, 4, 5}
+	var slice []int
+	var numero int
+	fmt.Print("Informe um número: ")
+	fmt.Scan(&numero)
+
+	for i := 0; i < len(array); i++ {
+		if numero == i {
+			continue
+		} else {
+			break
+			slice = append(slice, array[i], numero)
+		}
+		fmt.Print(slice)
+	}
+}
+
+EX08
+
+package main
+
+import "fmt"
+
+func main() {
+	slice := make([]string, 8)
+	var valor string
+	fmt.Println("Informe um valor ")
+	fmt.Scanln(&valor)
+	slice[0] = "joao"
+	slice[1] = "Maria"
+	slice[2] = "Jose"
+	slice[3] = "Pedro"
+	slice[4] = "Ricardo"
+	slice[5] = "Gabriel"
+	slice[6] = "Joaquim"
+	slice[7] = "Arthur"
+
+	novoSlice := removerOcorrencias(slice, valor)
+
+	fmt.Println("Slice original:", slice)
+	fmt.Println("Slice após a remoção das ocorrências de", valor, ":", novoSlice)
+}
+
+func removerOcorrencias(slice []string, valor string) []string {
+	resultado := []string{}
+	for _, elemento := range slice {
+		if elemento != valor {
+			resultado = append(resultado, elemento)
+		}
+	}
+	return resultado
+}
+
+EX09
+
+package main
+
+import "fmt"
+
+func main() {
+	array := make([]float64, 6)
+	var valor float64
+
+	fmt.Print("Informe um valor: ")
+	fmt.Scan(&valor)
+
+	for i := 0; i < len(array); i++ {
+		array[i] = valor
+	}
+	novoSlice := make([]float64, 6)
+	novoSlice = append(novoSlice, valor)
+}
+
+EX10
+
+package main
+
+import "fmt"
+
+func main() {
+	slice := make([]int, 10)
+	var maior int
+	slice = append(slice, 8, 4, 6, 3, 12, 9, 7, 44, 5, 20)
+	for i := 0; i < len(slice); i++ {
+		if i > maior {
+			maior = i
+		}
+		fmt.Println(maior)
+	}
+}
+
+EX11
+
+package main
+
+import "fmt"
+
+func main() {
+	matriz := [2][3]int{
+		{1, 2, 3},
+		{4, 5, 6},
+	}
+
+	var linha, coluna int
+	fmt.Print("Informe o índice da linha (0 ou 1): ")
+	fmt.Scanln(&linha)
+	fmt.Print("Informe o índice da coluna (0, 1 ou 2): ")
+	fmt.Scanln(&coluna)
+
+	if linha >= 0 && linha < 2 && coluna >= 0 && coluna < 3 {
+		valor := matriz[linha][coluna]
+		fmt.Printf("Valor na posição (%d, %d): %d\n", linha, coluna, valor)
+	} else {
+		fmt.Println("Índices inválidos. Certifique-se de que estão dentro do intervalo permitido.")
+	}
+}
+
+EX12
+
+package main
+
+func main() {
+	array := [5]int{1, 2, 3, 4, 5}
+	var slice []int
+	for i := 0; i < len(array); i++ {
+		if i%3 == 0 {
+			slice = append(slice, array[i])
+		} else {
+			continue
+		}
+	}
+}
+
+EX13
+
+package main
+
+import "fmt"
+
+func main() {
+	var array = [7]int{1, 2, 3, 4, 5, 6, 7}
+	var numero int
+	novoArray := make([]int, 7)
+
+	fmt.Println(array)
+	fmt.Println("Digite o número que você quer que fique em primeiro e em último nesta lista: ")
+	fmt.Scanln(&numero)
+
+	for i := 0; i < len(array); i++ {
+		array[0] = numero
+		array[4] = numero
+		novoArray = append(novoArray, array[i])
+
+	}
+}
+
+EX14
+
+package main
+
+import "fmt"
+
+func main() {
+	slice := make([]int, 8)
+	var i1, i2 int
+	for i := 0; i < len(slice); i++ {
+		fmt.Printf("Informe o valor para a posição %d: ", i)
+		fmt.Scanln(&slice[i])
+	}
+	fmt.Print("Informe o primeiro índice a ser trocado: ")
+	fmt.Scanln(&i1)
+	fmt.Print("Informe o segundo índice a ser trocado: ")
+	fmt.Scanln(&i2)
+
+	slice[i1], slice[i2] = slice[i2], slice[i1]
+	fmt.Println(slice)
+}
+
+EX15
+
+package main
+
+func main() {
+	var array = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	var slice []int
+	for i := 0; i < len(array); i++ {
+		if i > 5 {
+			slice = append(slice, array[i])
+		}
+	}
+}
+
+EX16
+
+package main
+
+func main() {
+	array := [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	var slice []int
+	for i := 0; i < len(array); i++ {
+		if i%2 == 0 {
+			slice = append(slice, array[i])
+		} else {
+			continue
+		}
+	}
+}
+
+EX17
+
+package main
+
+import "fmt"
+
+func main() {
+
+	var array = [10]int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+
+	soma := array[0] + array[2] + array[4] + array[6] + array[8]
+	fmt.Println(soma)
+}
+
+EX18
+
+package main
+
+import "fmt"
+
+func main() {
+	var n int
+	fmt.Println("Informe um numero inteiro")
+	fmt.Scanln(&n)
+	var slice []int
+
+	n = len(slice)
+
+	for i := 0; i < n; i++ {
+		if i%1 == 0 && i%i == 0 {
+			slice = append(slice, i)
+		}
+	}
+	fmt.Println(slice)
+
+}
+
+EX19
+
+package main
+
+import "fmt"
+
+func main() {
+	var numero int
+	var num1 int
+	var num2 int
+	var soma int
+
+	fmt.Println("Informe um numero que sera o tamanho das duas listas ")
+	fmt.Scanln(&numero)
+	for i:= 0; i<numero{
+		fmt.Println("Informe os numeros que estarao presentes na primeira lista")
+		fmt.Scanln(&num1)
+		fmt.Println("Informe os numeros que estarao presentes na segunda lista")
+		fmt.Scanln(&num2)
+
+		array1 := []int{num1}
+		array2:= []int{num2}
+		var array3 []int
+		array3= append(array3, array1, array2)
+
+
+	}
+
+EX20
+
+package main
+
+import "fmt"
+
+func main() {
+
+	var array = []int{1, 2, 3, 4, 5}
+	crescente := true
+
+	for i := 0; i < len(array); i++ {
+		if array[i] > array[i+1] {
+
+			crescente = false
+		}
+
+	}
+	if crescente {
+		fmt.Println("a lista esta em ordem crescente")
+	} else {
+		fmt.Println("A lista nao esta em ordem crescente")
+	}
+}
